@@ -1,0 +1,16 @@
+name: nightly
+
+on:
+  workflow_dispatch:
+
+jobs:
+  nightly:
+    uses: jsarzy/hello/.github/workflows/ci.yml@main
+    with:
+      nightly: true
+
+  daily:
+    uses: jsarzy/hello/.github/workflows/ci.yml@main
+    with:
+      nightly: false
+

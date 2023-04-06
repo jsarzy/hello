@@ -1,0 +1,22 @@
+name: ci
+
+on:
+  workflow_call:
+    inputs:
+      nightly:
+        type: boolean
+        default: false
+        required: false
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: ["a", "b", "c"]
+
+
+    steps:
+      - name: Echo
+        run: echo ${{ matrix.target }} ${{ inputs.nightly && '--nightly' || format('-T{0}', matrix.target) }}
